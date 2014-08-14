@@ -21,6 +21,7 @@
 		1516B5DE199C43B20086FE08 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1516B5C0199C43B20086FE08 /* UIKit.framework */; };
 		1516B5E6199C43B20086FE08 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1516B5E4199C43B20086FE08 /* InfoPlist.strings */; };
 		1516B5E8199C43B20086FE08 /* SignificantlyChangedTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1516B5E7199C43B20086FE08 /* SignificantlyChangedTests.m */; };
+		15F28793199CE3F100456765 /* PPLocationFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F28792199CE3F100456765 /* PPLocationFetcher.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		1516B5E5199C43B20086FE08 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1516B5E7199C43B20086FE08 /* SignificantlyChangedTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignificantlyChangedTests.m; sourceTree = "<group>"; };
 		1516B5F8199C4A730086FE08 /* PPLocationFetcherDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPLocationFetcherDelegate.h; sourceTree = "<group>"; };
+		15F28791199CE3F100456765 /* PPLocationFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPLocationFetcher.h; sourceTree = "<group>"; };
+		15F28792199CE3F100456765 /* PPLocationFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLocationFetcher.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +160,8 @@
 		1516B5F1199C49B30086FE08 /* Location */ = {
 			isa = PBXGroup;
 			children = (
+				15F28791199CE3F100456765 /* PPLocationFetcher.h */,
+				15F28792199CE3F100456765 /* PPLocationFetcher.m */,
 				1516B5F8199C4A730086FE08 /* PPLocationFetcherDelegate.h */,
 			);
 			path = Location;
@@ -260,6 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15F28793199CE3F100456765 /* PPLocationFetcher.m in Sources */,
 				1516B5CD199C43B20086FE08 /* PPAppDelegate.m in Sources */,
 				1516B5D3199C43B20086FE08 /* PPViewController.m in Sources */,
 				1516B5C9199C43B20086FE08 /* main.m in Sources */,
