@@ -457,6 +457,7 @@
 				1516B5ED199C43B20086FE08 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1516B5EE199C43B20086FE08 /* Build configuration list for PBXNativeTarget "SignificantlyChangedTests" */ = {
 			isa = XCConfigurationList;
@@ -465,6 +466,7 @@
 				1516B5F0199C43B20086FE08 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
