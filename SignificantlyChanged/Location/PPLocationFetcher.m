@@ -117,10 +117,26 @@ NSString *const PPLocationFetcherError = @"PPLocationFetcherError";
     }
     
     if (errorMessage) {
+        [self tellDelegateAboutAuthorizationError:errorMessage];
         return NO;
     }
     
     return YES;
+}
+
+- (void)tellDelegateAboutAuthorizationError:(NSString *)errorMessage {
+    NSDictionary *userInfo = @{ NSLocalizedDescriptionKey: errorMessage };
+    NSError *error = [NSError errorWithDomain:PPLocationFetcherError
+                                         code:PPLocationFetcherAuthorizationFailedErrorCode
+                                     userInfo:userInfo];
+
+    if ([self.delegate respondsToSelector:@selector(locationFetcher:fetchingLocationDidFailWithError:)]) {
+        [self.delegate locationFetcher:self fetchingLocationDidFailWithError:error];
+    }
+    
+    if ([self.delegate respondsToSelector:@selector(locationFetcher:fetchingStreetAddressDidFailWithError:)]) {
+        [self.delegate locationFetcher:self fetchingStreetAddressDidFailWithError:error];
+    }
 }
 
 @end

@@ -12,8 +12,7 @@
 extern NSString *const PPLocationFetcherError;
 
 typedef enum : short {
-    PPLocationFetcherErrorCodeNone = 0,
-    PPLocationFetcherErrorCodeAuthorizationFailed,
+    PPLocationFetcherAuthorizationFailedErrorCode,
 } PPLocationFetcherErrorCode;
 
 @interface PPLocationFetcher : NSObject
