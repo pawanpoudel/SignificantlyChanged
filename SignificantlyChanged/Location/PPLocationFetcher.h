@@ -7,7 +7,9 @@
 //
 
 #import "PPLocationFetcherDelegate.h"
-#import <CoreLocation/CoreLocation.h>
+
+@import CoreLocation;
+@class PPGeocoder;
 
 extern NSString *const PPLocationFetcherError;
 
@@ -37,6 +39,12 @@ typedef enum : short {
           value of this property is kCLLocationAccuracyThreeKilometers.
  */
 @property (nonatomic) CLLocationAccuracy desiredAccuracy;
+
+/**
+    @description A geocoder object that looks up street address for
+                 the specified coordinates.
+ */
+@property (nonatomic) PPGeocoder *geocoder;
 
 /**
     @description Fetches device's current location. It attempts to fetch a

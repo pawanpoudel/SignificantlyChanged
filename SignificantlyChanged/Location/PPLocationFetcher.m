@@ -7,6 +7,7 @@
 //
 
 #import "PPLocationFetcher.h"
+#import "PPGeocoder.h"
 
 const struct PPLocationFetcherConstants {
     CLLocationAccuracy desiredAccuracy;
@@ -136,6 +137,33 @@ NSString *const PPLocationFetcherError = @"PPLocationFetcherError";
     
     if ([self.delegate respondsToSelector:@selector(locationFetcher:fetchingStreetAddressDidFailWithError:)]) {
         [self.delegate locationFetcher:self fetchingStreetAddressDidFailWithError:error];
+    }
+}
+
+#pragma mark - Reverse geocoding
+
+- (void)reverseGeocodeCurrentLocation {
+    if (self.shouldFetchStreetAddress) {
+        [self.geocoder reverseGeocodeLocation:self.currentLocation
+                            completionHandler:^(CLPlacemark *placemark, NSString *streetAddress, NSError *error) {
+                                if (error) {
+                                    if ([self.delegate respondsToSelector:@selector(locationFetcher:fetchingStreetAddressDidFailWithError:)]) {
+                                        [self.delegate locationFetcher:self fetchingStreetAddressDidFailWithError:error];
+                                    }
+                                }
+                                else {
+                                    if ([self.delegate respondsToSelector:@selector(locationFetcher:didReceiveStreetAddress:forLocation:)]) {
+                                        [self.delegate locationFetcher:self
+                                               didReceiveStreetAddress:streetAddress
+                                                           forLocation:self.currentLocation];
+                                    }
+                                    
+                                    if ([self.delegate respondsToSelector:@selector(locationFetcher:didReceivePlacemark:)]) {
+                                        [self.delegate locationFetcher:self
+                                                   didReceivePlacemark:placemark];
+                                    }
+                                }
+                            }];
     }
 }
 

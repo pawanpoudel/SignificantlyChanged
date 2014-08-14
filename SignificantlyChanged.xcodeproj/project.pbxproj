@@ -21,6 +21,7 @@
 		1516B5DE199C43B20086FE08 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1516B5C0199C43B20086FE08 /* UIKit.framework */; };
 		1516B5E6199C43B20086FE08 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1516B5E4199C43B20086FE08 /* InfoPlist.strings */; };
 		1516B5E8199C43B20086FE08 /* SignificantlyChangedTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1516B5E7199C43B20086FE08 /* SignificantlyChangedTests.m */; };
+		1548950A199D80DC0093BE51 /* PPGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 15489509199D80DC0093BE51 /* PPGeocoder.m */; };
 		15F28793199CE3F100456765 /* PPLocationFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F28792199CE3F100456765 /* PPLocationFetcher.m */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +56,8 @@
 		1516B5E5199C43B20086FE08 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1516B5E7199C43B20086FE08 /* SignificantlyChangedTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignificantlyChangedTests.m; sourceTree = "<group>"; };
 		1516B5F8199C4A730086FE08 /* PPLocationFetcherDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPLocationFetcherDelegate.h; sourceTree = "<group>"; };
+		15489508199D80DC0093BE51 /* PPGeocoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPGeocoder.h; sourceTree = "<group>"; };
+		15489509199D80DC0093BE51 /* PPGeocoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPGeocoder.m; sourceTree = "<group>"; };
 		15F28791199CE3F100456765 /* PPLocationFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPLocationFetcher.h; sourceTree = "<group>"; };
 		15F28792199CE3F100456765 /* PPLocationFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLocationFetcher.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -163,8 +166,18 @@
 				15F28791199CE3F100456765 /* PPLocationFetcher.h */,
 				15F28792199CE3F100456765 /* PPLocationFetcher.m */,
 				1516B5F8199C4A730086FE08 /* PPLocationFetcherDelegate.h */,
+				15489507199D80BE0093BE51 /* Geocoding */,
 			);
 			path = Location;
+			sourceTree = "<group>";
+		};
+		15489507199D80BE0093BE51 /* Geocoding */ = {
+			isa = PBXGroup;
+			children = (
+				15489508199D80DC0093BE51 /* PPGeocoder.h */,
+				15489509199D80DC0093BE51 /* PPGeocoder.m */,
+			);
+			path = Geocoding;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,6 +278,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1548950A199D80DC0093BE51 /* PPGeocoder.m in Sources */,
 				15F28793199CE3F100456765 /* PPLocationFetcher.m in Sources */,
 				1516B5CD199C43B20086FE08 /* PPAppDelegate.m in Sources */,
 				1516B5D3199C43B20086FE08 /* PPViewController.m in Sources */,
