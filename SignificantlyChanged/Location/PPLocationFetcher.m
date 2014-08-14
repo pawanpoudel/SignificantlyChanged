@@ -211,4 +211,20 @@ NSString *const PPLocationFetcherError = @"PPLocationFetcherError";
     }
 }
 
+- (void)locationManager:(CLLocationManager *)manager
+       didFailWithError:(NSError *)error
+{
+    if (error.code == kCLErrorLocationUnknown) {
+        // Location is currently unknown, but CLLocationManager will keep trying.
+        // So, ignore this error.
+        return;
+    }
+    
+    self.currentLocation = nil;
+    
+    if ([self.delegate respondsToSelector:@selector(locationFetcher:fetchingLocationDidFailWithError:)]) {
+        [self.delegate locationFetcher:self fetchingLocationDidFailWithError:error];
+    }
+}
+
 @end
