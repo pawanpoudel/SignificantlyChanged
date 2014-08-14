@@ -53,6 +53,7 @@
 		1516B5E3199C43B20086FE08 /* SignificantlyChangedTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SignificantlyChangedTests-Info.plist"; sourceTree = "<group>"; };
 		1516B5E5199C43B20086FE08 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1516B5E7199C43B20086FE08 /* SignificantlyChangedTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignificantlyChangedTests.m; sourceTree = "<group>"; };
+		1516B5F8199C4A730086FE08 /* PPLocationFetcherDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPLocationFetcherDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +119,7 @@
 				1516B5D1199C43B20086FE08 /* PPViewController.h */,
 				1516B5D2199C43B20086FE08 /* PPViewController.m */,
 				1516B5D4199C43B20086FE08 /* Images.xcassets */,
+				1516B5F1199C49B30086FE08 /* Location */,
 				1516B5C3199C43B20086FE08 /* Supporting Files */,
 			);
 			path = SignificantlyChanged;
@@ -150,6 +152,14 @@
 				1516B5E4199C43B20086FE08 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1516B5F1199C49B30086FE08 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				1516B5F8199C4A730086FE08 /* PPLocationFetcherDelegate.h */,
+			);
+			path = Location;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
