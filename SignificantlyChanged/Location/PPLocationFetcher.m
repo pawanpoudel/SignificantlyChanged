@@ -139,4 +139,76 @@ NSString *const PPLocationFetcherError = @"PPLocationFetcherError";
     }
 }
 
+#pragma mark - CLLocationManager delegate methods
+
+- (void)locationManager:(CLLocationManager *)manager
+     didUpdateLocations:(NSArray *)locations
+{
+    [locations enumerateObjectsWithOptions:NSEnumerationReverse
+                                usingBlock:^(CLLocation *location, NSUInteger idx, BOOL *stop) {
+                                    if ([self isLocationAcceptable:location]) {
+                                        [self foundNewLocation:location];
+                                        *stop = YES;
+                                    }
+                                }];
+}
+
+- (BOOL)isLocationAcceptable:(CLLocation *)location {
+    if ([self isLocationCached:location]) {
+        // This is cached location. We don't want it.
+        // Keep listening for a fresh location.
+        return NO;
+    }
+    
+    if ([self isLocationDesired:location] ||
+        ((self.numberOfAttemptsToGetAccurateLocation > 3) && [self isLocationSomewhatDesired:location]) ||
+        ((self.numberOfAttemptsToGetAccurateLocation > 5 && [self isLocationLeastDesired:location])))
+    {
+        return YES;
+    }
+    
+    self.numberOfAttemptsToGetAccurateLocation++;
+    return NO;
+}
+
+- (BOOL)isLocationCached:(CLLocation *)location {
+    // First location returned may contain data that was
+    // cached from previous usage of the location service
+    NSTimeInterval locationAge = [[NSDate date] timeIntervalSinceDate:location.timestamp];
+    if (locationAge > PPLocationFetcherConstants.acceptableLocationAge) {
+        return YES;
+    }
+    return NO;
+}
+
+- (BOOL)isLocationDesired:(CLLocation *)location {
+    if (location.horizontalAccuracy <= PPLocationFetcherConstants.desiredAccuracy) {
+        return YES;
+    }
+    return NO;
+}
+
+- (BOOL)isLocationSomewhatDesired:(CLLocation *)location {
+    if (location.horizontalAccuracy <= PPLocationFetcherConstants.somewhatDesiredAccuracy) {
+        return YES;
+    }
+    return NO;
+}
+
+- (BOOL)isLocationLeastDesired:(CLLocation *)location {
+    if (location.horizontalAccuracy <= PPLocationFetcherConstants.lowestAcceptableAccuracy) {
+        return YES;
+    }
+    return NO;
+}
+
+- (void)foundNewLocation:(CLLocation *)newLocation {
+    self.numberOfAttemptsToGetAccurateLocation = 0;
+    self.currentLocation = newLocation;
+    
+    if ([self.delegate respondsToSelector:@selector(locationFetcher:didReceiveCurrentLocation:)]) {
+        [self.delegate locationFetcher:self didReceiveCurrentLocation:self.currentLocation];
+    }
+}
+
 @end
