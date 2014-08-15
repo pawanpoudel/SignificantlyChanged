@@ -85,7 +85,7 @@ NSString *const PPLocationFetcherError = @"PPLocationFetcherError";
     }
 }
 
-- (void)stopFetchingLocation {
+- (void)stopFetchingCurrentLocation {
     [self.clLocationManager stopUpdatingLocation];
 }
 
@@ -98,8 +98,8 @@ NSString *const PPLocationFetcherError = @"PPLocationFetcherError";
     }
 }
 
-- (void)stopFetchingStreetAddress {
-    [self stopFetchingLocation];
+- (void)stopFetchingCurrentStreetAddress {
+    [self stopFetchingCurrentLocation];
 }
 
 #pragma mark - Significant location change
