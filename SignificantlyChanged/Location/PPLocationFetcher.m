@@ -102,6 +102,24 @@ NSString *const PPLocationFetcherError = @"PPLocationFetcherError";
     [self stopFetchingLocation];
 }
 
+#pragma mark - Significant location change
+
+- (void)startMonitoringSignificantLocationChanges {
+    if ([CLLocationManager significantLocationChangeMonitoringAvailable] &&
+        [self authorizedToAccessLocationServices])
+    {
+        [self.clLocationManager startMonitoringSignificantLocationChanges];
+    }
+}
+
+- (void)stopMonitoringSignificantLocationChanges {
+    if ([CLLocationManager significantLocationChangeMonitoringAvailable] &&
+        [self authorizedToAccessLocationServices])
+    {
+        [self.clLocationManager stopMonitoringSignificantLocationChanges];
+    }
+}
+
 #pragma mark - Location Authorization
 
 - (BOOL)authorizedToAccessLocationServices {
