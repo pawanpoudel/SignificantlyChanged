@@ -10,6 +10,14 @@
 #import "PPLocationFetcher.h"
 #import "PPGeocoder.h"
 
+static const NSTimeInterval kDurationForKeepingAppAliveInBackground = 900; // 15 mins
+
+@interface PPLocationManager ()
+
+@property (nonatomic) NSTimer *timerForKeepingAppAliveInBackground;
+
+@end
+
 @implementation PPLocationManager
 
 #pragma mark - Initializers
@@ -46,7 +54,7 @@
     if ([self appLaunchedDueToLocationChangeNotification:notification] &&
         [self isLocationBackgroundModeEnabled])
     {
-        // TODO: Keep the app alive by listening to location updates in background.
+        [self keepAppAliveByListeningToLocationUpdatesInBackground];
     }
 }
 
@@ -63,6 +71,36 @@
     NSDictionary *appInfo = [[NSBundle mainBundle] infoDictionary];
     NSArray *backgroundModes = appInfo[@"UIBackgroundModes"];
     return [backgroundModes containsObject:@"location"];
+}
+
+#pragma mark - Keep app alive in background
+
+- (void)keepAppAliveByListeningToLocationUpdatesInBackground {
+    self.locationFetcher.desiredAccuracy = [self lowestLocationAccuracy];
+    [self.locationFetcher startFetchingCurrentLocation];
+    [self startKeepAliveTimer];
+    
+    [self startMonitoringSignificantLocationChanges];
+}
+
+- (CLLocationAccuracy)lowestLocationAccuracy {
+    return kCLLocationAccuracyThreeKilometers;
+}
+
+- (void)startKeepAliveTimer {
+    if (self.timerForKeepingAppAliveInBackground == nil) {
+        self.timerForKeepingAppAliveInBackground = [NSTimer scheduledTimerWithTimeInterval:kDurationForKeepingAppAliveInBackground
+                                                                                    target:self
+                                                                                  selector:@selector(stopListeningToLocationUpdates)
+                                                                                  userInfo:nil
+                                                                                   repeats:NO];
+    }
+}
+
+- (void)stopListeningToLocationUpdates {
+    [self.timerForKeepingAppAliveInBackground invalidate];
+    self.timerForKeepingAppAliveInBackground = nil;
+    [self.locationFetcher stopFetchingCurrentLocation];
 }
 
 @end
