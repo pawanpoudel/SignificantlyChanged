@@ -73,7 +73,7 @@ typedef enum : short {
     @discussion Call this method whenever your code no longer needs to
                 receive new street address events.
  */
-- (void)stopFetchingStreetAddress;
+- (void)stopFetchingCurrentStreetAddress;
 
 /**
     @description Starts the generation of updates based on significant
