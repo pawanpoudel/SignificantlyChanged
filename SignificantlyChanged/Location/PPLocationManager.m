@@ -43,11 +43,10 @@
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification {
-    
-    if ([self appLaunchedDueToLocationChangeNotification:notification]) {
-        // TODO: Check to see if the location background mode is enabled.
-        // If so, keep the app alive by listening to location updates in
-        // background.
+    if ([self appLaunchedDueToLocationChangeNotification:notification] &&
+        [self isLocationBackgroundModeEnabled])
+    {
+        // TODO: Keep the app alive by listening to location updates in background.
     }
 }
 
@@ -58,6 +57,12 @@
     }
     
     return NO;
+}
+
+- (BOOL)isLocationBackgroundModeEnabled {
+    NSDictionary *appInfo = [[NSBundle mainBundle] infoDictionary];
+    NSArray *backgroundModes = appInfo[@"UIBackgroundModes"];
+    return [backgroundModes containsObject:@"location"];
 }
 
 @end
