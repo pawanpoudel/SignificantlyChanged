@@ -43,8 +43,21 @@
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification {
-    // TODO: Find out if the app was launched due to significant location change.
-    // TODO: Check to see if the location background mode is enabled or not.
+    
+    if ([self appLaunchedDueToLocationChangeNotification:notification]) {
+        // TODO: Check to see if the location background mode is enabled.
+        // If so, keep the app alive by listening to location updates in
+        // background.
+    }
+}
+
+- (BOOL)appLaunchedDueToLocationChangeNotification:(NSNotification *)notification {
+    NSDictionary *userInfo = notification.userInfo;
+    if ([[userInfo allKeys] containsObject:UIApplicationLaunchOptionsLocationKey]) {
+        return YES;
+    }
+    
+    return NO;
 }
 
 @end
