@@ -113,4 +113,18 @@ static const NSTimeInterval kDurationForKeepingAppAliveInBackground = 900; // 15
     [self.locationFetcher stopMonitoringSignificantLocationChanges];
 }
 
+#pragma mark - MDLocationFetcher delegate methods
+
+- (void)locationFetcher:(PPLocationFetcher *)fetcher
+    didReceiveCurrentLocation:(CLLocation *)location
+{
+    DebugLog(@"Received a location update.");
+}
+
+- (void)locationFetcher:(PPLocationFetcher *)fetcher
+    fetchingLocationDidFailWithError:(NSError *)error
+{
+    DebugLog(@"Location fetcher failed to fetch a location: %@", [error localizedDescription]);
+}
+
 @end
