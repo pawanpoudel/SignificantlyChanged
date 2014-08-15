@@ -113,6 +113,13 @@ static const NSTimeInterval kDurationForKeepingAppAliveInBackground = 900; // 15
     [self.locationFetcher stopMonitoringSignificantLocationChanges];
 }
 
+#pragma mark - Location Permission
+
+- (void)promptForLocationPermissions {
+    [self.locationFetcher startMonitoringSignificantLocationChanges];
+    [self.locationFetcher stopMonitoringSignificantLocationChanges];
+}
+
 #pragma mark - MDLocationFetcher delegate methods
 
 - (void)locationFetcher:(PPLocationFetcher *)fetcher
