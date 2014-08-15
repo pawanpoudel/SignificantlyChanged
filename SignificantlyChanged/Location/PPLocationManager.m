@@ -103,4 +103,14 @@ static const NSTimeInterval kDurationForKeepingAppAliveInBackground = 900; // 15
     [self.locationFetcher stopFetchingCurrentLocation];
 }
 
+#pragma mark - Significant location change
+
+- (void)startMonitoringSignificantLocationChanges {
+    [self.locationFetcher startMonitoringSignificantLocationChanges];
+}
+
+- (void)stopMonitoringSignificantLocationChanges {
+    [self.locationFetcher stopMonitoringSignificantLocationChanges];
+}
+
 @end
