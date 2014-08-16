@@ -37,4 +37,8 @@
     return YES;
 }
 
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+    [self.locationManager startMonitoringSignificantLocationChanges];
+}
+
 @end
