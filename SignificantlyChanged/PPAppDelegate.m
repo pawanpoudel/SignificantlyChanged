@@ -41,4 +41,8 @@
     [self.locationManager startMonitoringSignificantLocationChanges];
 }
 
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+    [self.locationManager stopMonitoringSignificantLocationChanges];
+}
+
 @end
