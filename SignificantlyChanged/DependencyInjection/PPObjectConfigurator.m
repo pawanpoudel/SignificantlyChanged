@@ -7,6 +7,9 @@
 //
 
 #import "PPObjectConfigurator.h"
+#import "PPLocationManager.h"
+#import "PPLocationFetcher.h"
+#import "PPGeocoder.h"
 
 @implementation PPObjectConfigurator
 
@@ -19,6 +22,21 @@
     });
     
     return sharedInstance;
+}
+
+- (PPLocationManager *)locationManager {
+    PPLocationManager *manager = [[PPLocationManager alloc] init];
+    manager.locationFetcher = [self locationFetcher];
+    manager.locationFetcher.delegate = manager;
+    
+    return manager;
+}
+
+- (PPLocationFetcher *)locationFetcher {
+    PPLocationFetcher *locationFetcher = [[PPLocationFetcher alloc] init];
+    locationFetcher.geocoder = [[PPGeocoder alloc] init];
+    
+    return locationFetcher;
 }
 
 @end

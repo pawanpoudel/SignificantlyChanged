@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Pawan Poudel. All rights reserved.
 //
 
+@class PPLocationManager;
+
 @interface PPObjectConfigurator : NSObject
 
 /**
@@ -17,5 +19,10 @@
                 one object configurator for the entire app.
  */
 + (PPObjectConfigurator *)sharedInstance;
+
+/**
+    @description A fully configured PPLocationManager object.
+ */
+- (PPLocationManager *)locationManager;
 
 @end
