@@ -7,13 +7,42 @@
 //
 
 #import "PPAppDelegate.h"
+#import "PPObjectConfigurator.h"
+#import "PPLocationManager.h"
+
+@interface PPAppDelegate ()
+
+@property (nonatomic) PPLocationManager *locationManager;
+
+@end
 
 @implementation PPAppDelegate
+
+#pragma mark - Accessors
+
+- (PPLocationManager *)locationManager {
+    if (_locationManager == nil) {
+        _locationManager = [[PPObjectConfigurator sharedInstance] locationManager];
+    }
+    
+    return _locationManager;
+}
+
+#pragma mark - App lifecycle
 
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [self.locationManager promptForLocationPermissions];
     return YES;
-}							
+}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+    [self.locationManager startMonitoringSignificantLocationChanges];
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+    [self.locationManager stopMonitoringSignificantLocationChanges];
+}
 
 @end
