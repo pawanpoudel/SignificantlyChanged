@@ -24,6 +24,7 @@
 		15489510199D901D0093BE51 /* PPLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1548950F199D901D0093BE51 /* PPLocationManager.m */; };
 		15489515199D9C160093BE51 /* DebugLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 15489514199D9C160093BE51 /* DebugLog.m */; };
 		1548955D199EE1970093BE51 /* PPObjectConfigurator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1548955C199EE1970093BE51 /* PPObjectConfigurator.m */; };
+		15489560199EE9F10093BE51 /* PPObjectConfiguratorSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 1548955F199EE9F10093BE51 /* PPObjectConfiguratorSpec.m */; };
 		15F28793199CE3F100456765 /* PPLocationFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F28792199CE3F100456765 /* PPLocationFetcher.m */; };
 		7E6143CBB1B34F2AAB14CF47 /* libPods-SignificantlyChangedTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E92B45ABE8104847BBA11AD7 /* libPods-SignificantlyChangedTests.a */; };
 /* End PBXBuildFile section */
@@ -66,6 +67,7 @@
 		15489514199D9C160093BE51 /* DebugLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DebugLog.m; sourceTree = "<group>"; };
 		1548955B199EE1970093BE51 /* PPObjectConfigurator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPObjectConfigurator.h; sourceTree = "<group>"; };
 		1548955C199EE1970093BE51 /* PPObjectConfigurator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPObjectConfigurator.m; sourceTree = "<group>"; };
+		1548955F199EE9F10093BE51 /* PPObjectConfiguratorSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPObjectConfiguratorSpec.m; sourceTree = "<group>"; };
 		15F28791199CE3F100456765 /* PPLocationFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPLocationFetcher.h; sourceTree = "<group>"; };
 		15F28792199CE3F100456765 /* PPLocationFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPLocationFetcher.m; sourceTree = "<group>"; };
 		4557910AE58B41C492046942 /* Pods-SignificantlyChangedTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignificantlyChangedTests.xcconfig"; path = "Pods/Pods-SignificantlyChangedTests.xcconfig"; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				1516B5E2199C43B20086FE08 /* Supporting Files */,
+				1548955F199EE9F10093BE51 /* PPObjectConfiguratorSpec.m */,
 			);
 			path = SignificantlyChangedTests;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15489560199EE9F10093BE51 /* PPObjectConfiguratorSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
